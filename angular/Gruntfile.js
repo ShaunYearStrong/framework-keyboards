@@ -9,7 +9,7 @@ module.exports = function(grunt) {
       },
       build: {
         src: 'src/scripts/*.js',
-        dest: 'build/app.min.js'
+        dest: 'build/scripts/app.min.js'
       }
     },
     sass: {

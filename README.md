@@ -2,9 +2,16 @@
 
 A simple on screen keyboard made in a few different frameworks, just for fun.
 
-## Dependencies
+## Installation
 
-Requires npm and grunt, I've added a few little tasks to help with code quality and compilation
+Requires npm and bower, to install dependencies run:
+
+```
+npm install
+bower install
+```
+
+Then, to compile and run some useful watchers, just run:
 
 ```
 grunt

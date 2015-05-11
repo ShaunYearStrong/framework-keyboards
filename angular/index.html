@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>On screen keyboard</title>
+</head>
+<body ng-app="keyboard">
+	<div class="wrap">
+		<div class="container" ng-controller="KeyboardController">
+			<form class="">
+				<input type="text" class="" value="{{ typed }}" />
+				{{ typed }}
+			</form>
+			<ul class="keyboard">
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="!state.shift"  data-value="`">`</button>
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="state.shift" data-value="~">~</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="!state.shift"  data-value="1">1</button>
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="state.shift" data-value="!">!</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="!state.shift"  data-value="2">2</button>
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="state.shift" data-value="@">@</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="!state.shift"  data-value="3">3</button>
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="state.shift" data-value="#">#</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="!state.shift"  data-value="4">4</button>
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="state.shift" data-value="$">$</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="!state.shift"  data-value="5">5</button>
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="state.shift" data-value="%">%</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="!state.shift"  data-value="6">6</button>
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="state.shift" data-value="^">^</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="!state.shift"  data-value="7">7</button>
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="state.shift" data-value="&amp;">&amp;</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="!state.shift"  data-value="8">8</button>
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="state.shift" data-value="*">*</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="!state.shift"  data-value="9">9</button>
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="state.shift" data-value="(">(</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="!state.shift"  data-value="0">0</button>
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="state.shift" data-value=")">)</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="!state.shift"  data-value="-">-</button>
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="state.shift" data-value="_">_</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="!state.shift"  data-value="=">=</button>
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="state.shift" data-value="+">+</button>
+				</li>
+				<li class="keyboard__item keyboard__item--delete">
+					<button class="keyboard__btn" type="button" ng-click="deleteKey()">delete</button>
+				</li>
+				<li class="keyboard__item keyboard__item--tab">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" data-value="	">tab</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="q">q</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="w">w</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="e">e</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="r">r</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="t">t</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="y">y</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="u">u</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="i">i</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="o">o</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="p">p</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="!state.shift" data-value="[">[</button>
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="state.shift" data-value="{">{</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="!state.shift" data-value="]">]</button>
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="state.shift" data-value="}">}</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="!state.shift" data-value="\">\</button>
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="state.shift" data-value="|">|</button>
+				</li>
+				<li class="keyboard__item keyboard__item--capslock">
+					<button class="keyboard__btn" type="button" ng-click="capsLock()">caps lock</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="a">a</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="s">s</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="d">d</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="f">f</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="g">g</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="h">h</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="j">j</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="k">k</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="l">l</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="!state.shift" data-value=";">;</button>
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="state.shift" data-value=":">:</button>
+					</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="!state.shift" data-value="'">'</button>
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="state.shift" data-value="&quot;">&quot;</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" data-value="/n">Return</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="shiftKey()">shift</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="z">z</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="x">x</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="c">c</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="v">v</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="b">b</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="n">n</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" ng-click="handleType($event)" data-value="m">m</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="!state.shift" data-value=",">,</button>
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="state.shift" data-value="&lt;">&lt;</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="!state.shift" data-value=".">.</button>
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="state.shift" data-value="&gt;">&gt;</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="!state.shift" data-value="/">/</button>
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" ng-show="state.shift" data-value="?">?</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="shiftKey()">shift</button>
+				</li>
+				<li class="keyboard__item">
+					<button class="keyboard__btn" type="button" ng-click="handleType($event)" data-value="&nbsp;">&nbsp;</button>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript" src="build/vendor/angular/angular.min.js"></script>
+	<script type="text/javascript" src="src/scripts/app.js"></script>
+	<script type="text/javascript" src="src/scripts/controller.js"></script>
+</body>
+</html>

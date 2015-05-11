@@ -8,8 +8,8 @@ module.exports = function(grunt) {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
-        src: 'src/<%= pkg.name %>.js',
-        dest: 'build/<%= pkg.name %>.min.js'
+        src: 'src/scripts/*.js',
+        dest: 'build/app.min.js'
       }
     },
     sass: {
@@ -42,8 +42,14 @@ module.exports = function(grunt) {
         files: 'src/styles/**/*.scss',
         tasks: ['sass'],
         options: {
-          livereload: true,
+          livereload: true
         },
+      },
+      js: {
+        files: 'src/scripts/*.js',
+        options: {
+          livereload: true
+        }
       }
     }
   });

@@ -1,0 +1,10 @@
+node_modules/
+bower_components/
+build/
+.DS_Store
+.idea
+.jshintrc
+.jscsrc
+.csslintrc
+.sass-cache
+npm-debug.log

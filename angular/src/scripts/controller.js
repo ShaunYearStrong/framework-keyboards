@@ -22,20 +22,24 @@
 		$scope.deleteKey = deleteKey;
 
 		function handleType($event) {
-			$scope.typed += $event.target.attributes['data-value'].value;
+			if($event.target.attributes['data-value']) {
+				$scope.typed += $event.target.attributes['data-value'].value;
+			}
 		}
 
-		function capsLock() {
+		function capsLock($event) {
 			$scope.state.shift = false;
-			
+
 			if ($scope.state.capsLock) {
 				$scope.state.capsLock = false;
 			} else {
 				$scope.state.capsLock = true;
 			}
+
+			$event.stopPropagation();
 		}
 
-		function shiftKey() {
+		function shiftKey($event) {
 			$scope.state.capsLock = false;
 
 			if ($scope.state.shift) {
@@ -43,10 +47,13 @@
 			} else {
 				$scope.state.shift = true;
 			}
+
+			$event.stopPropagation();
 		}
 
-		function deleteKey() {
+		function deleteKey($event) {
 			$scope.typed  = $scope.typed.substring(0, $scope.typed.length - 1);
+			$event.stopPropagation();
 		}
 	}
 

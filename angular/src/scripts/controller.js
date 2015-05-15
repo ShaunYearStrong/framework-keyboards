@@ -39,7 +39,8 @@
                     'shiftKey'
                 ],
                 currentModifier,
-                altModifier;
+                altModifier,
+                i;
 
             for(i = 0; i < modifierKeys.length; i++) {
                 if (modifierKeys[i] === modifier) {

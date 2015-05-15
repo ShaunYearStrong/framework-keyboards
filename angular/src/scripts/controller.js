@@ -17,43 +17,44 @@
         };
 
         $scope.handleType = handleType;
-        $scope.capsLock = capsLock;
-        $scope.shiftKey = shiftKey;
-        $scope.deleteKey = deleteKey;
 
         function handleType($event) {
             if($event.target.attributes['data-value']) {
-                $scope.typed += $event.target.attributes['data-value'].value;
+                var keyValue = $event.target.attributes['data-value'];
+
+                if(keyValue === 'capsLock' || keyValue === 'shiftKey') {
+                    handleModifier(keyValue);
+                } else if (keyValue === 'deleteKey') {
+                    handleDelete();
+                } else {
+                    $scope.typed += $keyValue;
+                }
+
             }
         }
 
-        function capsLock($event) {
-            $scope.state.shift = false;
+        function handleModifier(modifier) {
+            var modifierKeys = [
+                    'capsLock',
+                    'shiftKey'
+                ],
+                currentModifier,
+                altModifier;
 
-            if ($scope.state.capsLock) {
-                $scope.state.capsLock = false;
-            } else {
-                $scope.state.capsLock = true;
+            for(i = 0; i < modifierKeys.length; i++) {
+                if (modifierKeys[i] === modifier) {
+                    currentModifier = modifierKeys[i];
+                } else {
+                    altModifier = modifierKeys[i];
+                }
             }
 
-            $event.stopPropagation();
+            $scope.state[altModifier] = false;
+            $scope.state[currentModifier] = $scope.state[currentModifier] === true ? false : true;
         }
 
-        function shiftKey($event) {
-            $scope.state.capsLock = false;
-
-            if ($scope.state.shift) {
-                $scope.state.shift = false;
-            } else {
-                $scope.state.shift = true;
-            }
-
-            $event.stopPropagation();
-        }
-
-        function deleteKey($event) {
-            $scope.typed  = $scope.typed.substring(0, $scope.typed.length - 1);
-            $event.stopPropagation();
+        function handleDelete() {
+            $scope.typed  = $scope.typed.slice(0, - 1);
         }
     }
 

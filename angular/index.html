@@ -65,7 +65,7 @@
 					<button class="keyboard__btn" type="button" ng-show="state.shift" data-value="+">+</button>
 				</li>
 				<li class="keyboard__item keyboard__item--delete">
-					<button class="keyboard__btn" type="button" ng-click="deleteKey($event)">delete</button>
+					<button class="keyboard__btn" type="button" data-value="deleteKey">delete</button>
 				</li>
 				<li class="keyboard__item keyboard__item--tab">
 					<button class="keyboard__btn" type="button" data-value="	">tab</button>
@@ -113,7 +113,7 @@
 					<button class="keyboard__btn" type="button" ng-show="state.shift" data-value="|">|</button>
 				</li>
 				<li class="keyboard__item keyboard__item--capslock">
-					<button class="keyboard__btn" type="button" ng-click="capsLock($event)">caps lock</button>
+					<button class="keyboard__btn" type="button" data-value="capsLock">caps lock</button>
 				</li>
 				<li class="keyboard__item">
 					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" data-value="a">a</button>
@@ -155,7 +155,7 @@
 					<button class="keyboard__btn" type="button" data-value="/n">Return</button>
 				</li>
 				<li class="keyboard__item">
-					<button class="keyboard__btn" type="button" ng-click="shiftKey($event)">shift</button>
+					<button class="keyboard__btn" type="button" data-value="shiftKey">shift</button>
 				</li>
 				<li class="keyboard__item">
 					<button class="keyboard__btn" ng-class="{ 'keyboard__btn--uppercase' : state.shift || state.capsLock }" type="button" data-value="z">z</button>
@@ -191,7 +191,7 @@
 					<button class="keyboard__btn" type="button" ng-show="state.shift" data-value="?">?</button>
 				</li>
 				<li class="keyboard__item">
-					<button class="keyboard__btn" type="button" ng-click="shiftKey($event)">shift</button>
+					<button class="keyboard__btn" type="button" data-value="shiftKey">shift</button>
 				</li>
 				<li class="keyboard__item">
 					<button class="keyboard__btn" type="button" data-value="&nbsp;">&nbsp;</button>

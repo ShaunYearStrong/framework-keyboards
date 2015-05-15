@@ -13,7 +13,7 @@
         $scope.typed = "";
         $scope.state = {
             capsLock: false,
-            shift: false
+            shiftKey: false
         };
 
         $scope.handleType = handleType;

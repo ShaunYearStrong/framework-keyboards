@@ -16,13 +16,3 @@ Then, to compile and run some useful watchers, just run:
 ```
 grunt
 ```
-
-## To do
-
-- [ ] Styling
-- [x] Angular
-- [ ] React
-- [ ] Ember
-- [ ] Backbone
-- [ ] jQuery
-- [ ] Plain ol' javascript

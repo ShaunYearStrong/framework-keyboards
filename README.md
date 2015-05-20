@@ -4,7 +4,7 @@ A simple on screen keyboard made in a few different frameworks, just for fun.
 
 ## Installation
 
-Requires npm and bower, to install dependencies run:
+Requires npm and bower, to install dependencies, navigate to the subdirectory of the keyboard you want to run, then run:
 
 ```
 npm install

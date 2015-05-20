@@ -6,6 +6,7 @@
 - [x] Angular
 - [ ] React
 - [ ] Ember
+- [ ] Web components/Polymer
 - [ ] Backbone
 - [ ] jQuery
 - [ ] Plain ol' javascript
